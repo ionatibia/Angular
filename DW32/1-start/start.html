@@ -3,6 +3,14 @@
 		<link rel="stylesheet" href="css/bootstrap.min.css">
 		<script type="text/javascript" src="js/angular.min.js"></script>
 		<script type="text/javascript" src="js/controller.js"></script>
+		<style type="text/css">
+			.img-responsive{
+				margin: 15px;
+				width: 250px;
+				height: 150px;
+				float: left;
+			}
+		</style>
 	</head>
 	<body ng-controller="MiCont">
 		<div class="container">
@@ -15,21 +23,23 @@
 				<div class="col-md-4">
 					<label for="name">Enter Your Name</label>
 					<input type="text" ng-model="nombre" class="form-control input-lg" id="name">
-					<button class="btn btn-default" ng-click="actualizarNombre()">Actualizar</button>
+					<button class="btn btn-primary btn-lg" ng-click="actualizarNombre()">Actualizar</button>
+					<div ng-show="mostrarAlert" class="alert alert-danger alert-dismissible" role="alert">
+  						<strong>Aizu!!! </strong>Zerbait idatzi behar duzu...
+					</div><!--alert-->
 					<ul>
 						<li ng-repeat="nom in nombres">{{nom.nombre}}</li>
 					</ul>
-					<ul>
-						<li ng-repeat="f in fotos">{{f.link}}</li>
-					</ul>
-					<div ng-repeat="x in fotos">
-					<img src={{x.link}}>
-					</div>
 				</div><!--col-md-4-->
-
+			</div><!--row-->
+			<div id="row">
+				<div ng-show="mostrarAlert2" class="alert alert-warning alert-dismissible" role="alert">
+  						<strong>Aizu!!! </strong>Weborriak ez du ezer bueltatu...
+					</div><!--alert-->
+				<img ng-repeat="x in fotos" src={{x.media.m}} class="img-responsive img-circle">
 			</div><!--row-->
 		</div><!--container-->
-		
-		
+		<script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
+		<script type="text/javascript" src="js/bootstrap.min.js"></script>
 	</body>
 </html>
