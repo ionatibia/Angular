@@ -16,19 +16,13 @@ amigosControllers.controller('amigosCtrl', ['$scope','$rootScope',
 		tlfno:"123456789"
 	}
 	];
+	//$scope.amigos=$rootScope.amigos;
   }]);
 amigosControllers.controller('amigoEditCtrl', ['$scope','$rootScope', '$routeParams',
   function($scope,$rootScope,$routeParams) {
-  	console.log($rootScope);
-  	console.log($routeParams);
-  	for(i=0; i<$routeScope.amigos;i++){
-  		if ($rootScope.amigos[i] == $routeParams.amigoId) {
+  	for(i=0;i<$rootScope.amigos.length;i++){
+  		if ($rootScope.amigos[i].nombre == $routeParams.amigoId) {
   			$scope.amigo=$rootScope.amigos[i];
-			/*{
-				nombre:amigo.nombre,
-				tlfno:amigo.telefono
-			}*/
   		}
   	}
-    
   }]);
