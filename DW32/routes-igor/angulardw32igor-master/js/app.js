@@ -14,6 +14,10 @@ amigoApp.config(['$routeProvider',
         templateUrl: 'amigoEdit.html',
         controller: 'amigoEditCtrl'
       }).
+      when('/nuevo', {
+        templateUrl: 'amigoEdit.html',
+        controller: 'amigoNewCtrl'
+      }).
       otherwise({
         redirectTo: '/amigos'
       });
