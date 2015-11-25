@@ -1,0 +1,17 @@
+<form class="">
+	<div class="form-group">
+		<label for="txtNombre" class="form-label">Nombre:</label>
+		<input type="text" class="text form-control" ng-model="amigo.nombre"/>
+	</div>
+	<div class="form-group">
+		<label for="txtNombre" class="form-label">Tlfno:</label>
+		<input type="text" class="text form-control" ng-model="amigo.tlfno"/>
+	</div>
+	<div class="form-group">
+
+		<a href='#/amigos' class="btn btn-danger" ng-click="eliminar()">Eliminar</a>
+		<a href="#/amigos" class="btn btn-primary">Volver</a>
+		<a href="#/amigos" class="btn btn-primary" ng-click="guardar()">Guardar</a>
+		
+	</div>	
+</form>
