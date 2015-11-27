@@ -1,7 +1,8 @@
 <form class="">
+	<div id="alert"></div>
 	<div class="form-group">
 		<label for="txtNombre" class="form-label">Nombre:</label>
-		<input type="text" class="text form-control" ng-model="amigo.nombre"/>
+		<input type="text" class="text form-control" ng-model="amigo.nombre" data-title="Escribe el nombre" bs-tooltip data-animation="am-flip-x" />
 	</div>
 	<div class="form-group">
 		<label for="txtNombre" class="form-label">Tlfno:</label>
@@ -9,9 +10,9 @@
 	</div>
 	<div class="form-group">
 
-		<a href='#/amigos' class="btn btn-danger" ng-click="eliminar()">Eliminar</a>
+		<button bs-modal='modal' class="btn btn-danger" ng-click="eliminar()">Eliminar</button>
 		<a href="#/amigos" class="btn btn-primary">Volver</a>
-		<a href="#/amigos" class="btn btn-primary" ng-click="guardar()">Guardar</a>
+		<button class="btn btn-primary" title="Felicidades!!!" data-content="El amigo ha sido guardado correctamente" data-type="success" data-placement="top-right" data-container="#alert" data-duration="3" bs-alert ng-click="guardar()" animation="am-fade-and-slide-left">Guardar</button>
 		
 	</div>	
 </form>

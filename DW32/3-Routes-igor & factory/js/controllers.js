@@ -1,4 +1,4 @@
-var amigosControllers = angular.module('amigosControllers', []);
+var amigosControllers = angular.module('amigosControllers', ['mgcrea.ngStrap','ngAnimate']);
 
 //controlador para el index
 /*amigosControllers.controller('appCtrl', ['$scope','$rootScope','$location', function($scope,$rootScope,$location){
@@ -56,6 +56,10 @@ amigosControllers.controller('amigoEditCtrl',['$scope','$rootScope','$routeParam
 			$scope.eliminar=function () {
 				$scope.amigo = amigoSrv.delete($routeParams.amigoId);
 			}
+			$scope.modal = {
+			  "title": "Title",
+			  "content": "Hello Modal<br />This is a multiline message!"
+			};
 		}]);
 
 amigosControllers.controller('amigoNewCtrl', ['$scope','$rootScope','$routeParams', 'amigoSrv',
