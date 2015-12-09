@@ -22,7 +22,7 @@ amigoApp.factory('amigoSrv',['$firebaseArray',function ($firebaseArray) {
       tlfno:"123456789"
     }
   ];*/
-  var ref = new Firebase("https://froga.firebaseio.com");
+  var ref = new Firebase("https://astigarraga.firebaseio.com");
   var lstAmigos=$firebaseArray(ref);
   return {
     //funcion para recuperar toda la lista de amigos

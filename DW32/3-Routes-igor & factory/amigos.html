@@ -3,6 +3,6 @@
 	<!--va a la ruta mediante el nombre-->
 	<!--<li ng-repeat="amigo in amigos"><a href="#/amigo/{{amigo.nombre}}">{{amigo.nombre}}</a>-->
 	<!--ha cambiado la ruta cogiendo el indice-->
-	<li ng-repeat="amigo in amigos"><a href="#/amigo/{{$index}}">{{amigo.nombre}}</a>
+	<li ng-repeat="amigo in amigos | filter: busqueda"><a href="#/amigo/{{$index}}">{{amigo.nombre}}</a>
 		<strong>{{amigo.tlfno}}</strong></li>
 </ul>

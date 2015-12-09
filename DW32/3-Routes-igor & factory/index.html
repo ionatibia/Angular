@@ -38,6 +38,12 @@
         			<!--añadimos el href a amigo-->
         			<li ng-class="{active:isActive('/nuevo')}"><a href="#/nuevo">Nuevo</a></li>
       			</ul>
+            <form class="navbar-form navbar-right" role="search">
+              <div class="form-group">
+                <input type="text" class="form-control" placeholder="Busqueda" ng-model="busqueda">
+              </div>
+              <button class="btn btn-default">Buscar</button>
+            </form>
     		</div><!-- /.navbar-collapse -->
   		</div><!-- /.container-fluid -->
 	</nav>
