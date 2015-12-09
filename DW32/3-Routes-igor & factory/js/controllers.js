@@ -22,8 +22,9 @@ amigosControllers.controller('amigoEditCtrl',['$scope','$rootScope','$routeParam
 			$scope.amigo = amigoSrv.find($routeParams.amigoId);
 
 			$scope.guardar=function () {
-				console.log($scope.amigo.nombre);
-				$rootScope.amigos[$routeParams.amigoId]=$scope.amigo;
+				//console.log($scope.amigo.nombre);
+				//$rootScope.amigos[$routeParams.amigoId]=$scope.amigo;
+				amigoSrv.save($routeParams.amigoId);
 			}
 			$scope.eliminar=function () {
 				$scope.amigo = amigoSrv.delete($routeParams.amigoId);
