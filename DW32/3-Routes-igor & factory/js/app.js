@@ -9,8 +9,8 @@ var amigoApp = angular.module('amigoApp', [
 amigoApp.factory('myPouch', [function() {
 
   var mydb = new PouchDB('ng-pouch');
-  PouchDB.replicate('ng-pouch', 'https://ibeaumont.cloudant.com/amigos', {continuous: true});
-  PouchDB.replicate('https://ibeaumont.cloudant.com/amigos', 'ng-pouch', {continuous: true});
+  PouchDB.replicate('ng-pouch', 'https://natiexperiencia.cloudant.com/test', {continuous: true,retry:true});
+  PouchDB.replicate('https://natiexperiencia.cloudant.com/test', 'ng-pouch', {continuous: true,retry:true});
   return mydb;
 
 }]);
@@ -176,6 +176,13 @@ amigoApp.factory('amigosSrv3', ['$rootScope','myPouch', 'util',
 //fin otra prueba pouchdb
 //*************************************************************************
 
+//*************************************************************************
+//prueba mongolabs
+
+
+
+//fin prueba mongolabs
+//*************************************************************************
 
 //Servicio para acceder a los datos de los amigos
 amigoApp.factory('amigoSrv',['$firebaseArray',function ($firebaseArray) {
