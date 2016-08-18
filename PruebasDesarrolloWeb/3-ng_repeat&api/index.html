@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>3</title>
+	<meta charset="utf-8">
+	<style type="text/css">
+		body{ font-family: sans-serif;}
+		li{
+		    font-size: 0.8em;
+		    margin-bottom: 10px;
+		    padding: 10px;
+		}
+		li span{
+		    font-weight: bold;
+		    display: block;
+		    font-size: 1.2em;
+		}
+		aside{
+		    width: 200px;
+		    float: right;
+		    padding: 20px;
+		    display: table-cell;
+		}
+		aside h2{
+		    margin-bottom: 3px;
+		}
+		section{
+		    display: table-cell;
+		}
+		li.even{
+		    background-color: #d5d5d5;
+		}
+		li.odd{
+		    background-color: #d5d5ff;   
+		}
+	</style>
+</head>
+<body>
+	<div ng-app="apiApp" ng-controller="apiAppCtrl as vm">
+	  <h1>Pruebo Ajax con JSONP</h1>
+	  <p>
+	      Busca cerveza:
+	      <input type="text" ng-model="vm.nombre"> <input type="button" value="Buscar" ng-click="vm.buscaCervezas()">
+	  </p>
+	  <aside>
+	       <h2>Filtra:</h2>
+	        <input type="text" ng-model="vm.filtroCliente">
+	       <h2>Orden</h2>
+	        <p>
+	            <button ng-click="vm.orden=false">Alfabetico</button>
+	            <br />
+	            <button ng-click="vm.orden=true">Contrario</button>
+	        </p>
+	        <p>
+	            <input type="radio" name="campo" ng-model="vm.campo" value="title"> Title
+	            <br />
+	            <input type="radio" name="campo" ng-model="vm.campo" value="body"> Body
+	        </p>
+	  </aside>
+	  <section>
+	    <ul>
+	      <li ng-repeat="cerveza in vm.cervezas | filter:vm.filtroCliente | orderBy:vm.campo:vm.orden" ng-class="{even: $even, odd: $odd}">
+	        <span>{{$index +1}}.- ID: {{cerveza.id}} {{cerveza.title}},</span> {{ cerveza.body }}
+	      </li>
+	    </ul>
+	  </section> 
+	</div>
+
+	<script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s=" crossorigin="anonymous"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+	<script src='app.js'></script>
+</body>
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Probando Ajax en AngularJS</title>
+    <style>
+        body{ font-family: sans-serif;}
+        li{
+            font-size: 0.8em;
+        }
+        li span{
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+<div ng-app="apiApp" ng-controller="apiAppCtrl as vm">
+  <h1>Prueba Ajax</h1>
+  Titulo: <input type="text" ng-model="vm.titulo"> Contenido: <input type="text" ng-model="vm.contenido"> <input type="button" value="Crear" ng-click="vm.crearArticulo()">
+  <br/>
+  Articulo creado: {{vm.articuloCreado.title}}, {{vm.articuloCreado.content}}
+  <p>
+      <input type="button" value="buscar" ng-click="vm.buscarArticulos()">
+  </p>
+  <p>Status: {{vm.resp.status}}</p>
+  <ul>
+      <li ng-repeat="articulo in vm.articulos">Titulo: <span>{{articulo.title}}</span>, contenido: {{articulo.content}}</li>
+  </ul>
+
+</div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.24/angular.min.js"></script>
+    <script>
+    angular
+        .module('apiApp', [])
+        .controller('apiAppCtrl', ['$http', controladorPrincipal]);
+
+    function controladorPrincipal($http){
+        var vm=this;
+        //importante http://
+        var targetUrl = 'http://localhost:8000/articles';
+
+        var req = {
+        	method: 'GET',
+        	url: targetUrl,
+        	headers:{
+        		'Content-Type': 'application/json',
+        		'x-access-token': 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1N2FkNmJlNDg2NGIwNzcwMTZkZWE1ZTMiLCJpYXQiOjE0NzE1MTg3NjksImV4cCI6MTQ3MTYwNTE2OX0.ylMgQmbqBM_eq5WqCd1ZGOkdHWBsEm75cZjhkd5Zyk8'
+        	}
+        }
+        
+        vm.buscarArticulos = function(){
+            $http(req).then(function (result) {
+            	console.log(result)
+            	vm.articulos = result.data;
+            	vm.resp = result;
+            }, function (err) {
+            	console.log(err)
+            })
+        }
+
+        vm.crearArticulo = function () {
+        	var req2 = {
+        		method: 'POST',
+        		url: targetUrl,
+        		headers: {
+        			'Content-Type': 'application/json',
+        			'x-access-token': 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1N2FkNmJlNDg2NGIwNzcwMTZkZWE1ZTMiLCJpYXQiOjE0NzE1MTg3NjksImV4cCI6MTQ3MTYwNTE2OX0.ylMgQmbqBM_eq5WqCd1ZGOkdHWBsEm75cZjhkd5Zyk8'
+        		},
+        		data: {
+        			"title": vm.titulo,
+        			"content": vm.contenido
+        		}
+        	}
+
+        	$http(req2).then(function (respuesta) {
+        		vm.articuloCreado = respuesta.data;
+        	}, function (err) {
+        		console.log(err)
+        	})
+        }
+    }
+
+    </script>
+</body>
+</html>
