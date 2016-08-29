@@ -24,7 +24,7 @@
   </p>
   <p>Status: {{vm.resp.status}}</p>
   <ul>
-      <li ng-repeat="articulo in vm.articulos">Titulo: <span>{{articulo.title}}</span>, contenido: {{articulo.content}}</li>
+      <li ng-repeat="articulo in vm.articulos | orderBy:'-created'">Titulo: <span>{{articulo.title | uppercase }}</span>, contenido: {{articulo.content}}</li>
   </ul>
 
 </div>
@@ -45,7 +45,7 @@
         	url: targetUrl,
         	headers:{
         		'Content-Type': 'application/json',
-        		'x-access-token': 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1N2FkNmJlNDg2NGIwNzcwMTZkZWE1ZTMiLCJpYXQiOjE0NzE1MTg3NjksImV4cCI6MTQ3MTYwNTE2OX0.ylMgQmbqBM_eq5WqCd1ZGOkdHWBsEm75cZjhkd5Zyk8'
+        		'x-access-token': 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1N2FkNmJlNDg2NGIwNzcwMTZkZWE1ZTMiLCJpYXQiOjE0NzE4NTUyNTIsImV4cCI6MTQ3MTk0MTY1Mn0.AkpaOFBtaXACfnYjR40PbUncoQSFvJY__A-K0TWUu_I'
         	}
         }
         
@@ -65,7 +65,7 @@
         		url: targetUrl,
         		headers: {
         			'Content-Type': 'application/json',
-        			'x-access-token': 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1N2FkNmJlNDg2NGIwNzcwMTZkZWE1ZTMiLCJpYXQiOjE0NzE1MTg3NjksImV4cCI6MTQ3MTYwNTE2OX0.ylMgQmbqBM_eq5WqCd1ZGOkdHWBsEm75cZjhkd5Zyk8'
+        			'x-access-token': 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1N2FkNmJlNDg2NGIwNzcwMTZkZWE1ZTMiLCJpYXQiOjE0NzE4NTUyNTIsImV4cCI6MTQ3MTk0MTY1Mn0.AkpaOFBtaXACfnYjR40PbUncoQSFvJY__A-K0TWUu_I'
         		},
         		data: {
         			"title": vm.titulo,
@@ -75,6 +75,7 @@
 
         	$http(req2).then(function (respuesta) {
         		vm.articuloCreado = respuesta.data;
+                vm.articulos.push(vm.articuloCreado)
         	}, function (err) {
         		console.log(err)
         	})

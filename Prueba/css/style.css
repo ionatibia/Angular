@@ -1,0 +1,8 @@
+.nav .active{
+	background-color: blue !important;
+	text-decoration: underline;
+}
+.navbar-default .navbar-brand:hover,
+.navbar-default .navbar-brand:focus {
+    color: blue;
+}
