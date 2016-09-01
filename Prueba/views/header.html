@@ -2,18 +2,18 @@
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" aria-expanded="false">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" aria-expanded="false" data-target=".navbar-collapse">
         <span class="sr-only">Toggle navigation</span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#">Brand</a>
+      <img src="../img/logo belardi sello.png" width="75" height="60" class="navbar-brand">
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav">
+      <ul class="nav navbar-nav" ng-show="checkLogin()">
         <li ng-class="{ active: isActive('/dispensa')}"><a href="#/dispensa">Dispensa</a></li>
         <li ng-class="{ active: isActive('/socios')}"><a href="#/socios">Socios</a></li>
         <li ng-class="{ active: isActive('/productos')}"><a href="#/productos">Productos</a></li>
