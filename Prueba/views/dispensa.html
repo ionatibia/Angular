@@ -7,7 +7,12 @@
 			<input type="number" name="numeroSocio" id="numeroSocio" class="form-control" ng-model="ticket.numeroSocio" ng-required="true" maxlength="3">
 		</div>
 		<!--Productos-->
-
+		<div class="form-group">
+			<select class="form-control" ng-model="productoSeleccionado">
+				<option value="" selected>Selecciona</option>
+				<option ng-repeat="option in productos" value="{{option.numero}}">{{option.nombre}}</option>
+			</select>
+		</div>
 		<button id="submitButton" class="btn btn-primary" ng-click="aceptar(ticket)" ng-disabled="formularioDispensa.$invalid">Aceptar</button>
 	</form>
 </div>
